@@ -4,10 +4,11 @@ import axios from "axios";
 
 function Projects(props) {
   const [project, setProject] = useState({ project: "currently empty" });
-
+  const projectId = props.match.params.id;
+  console.log("project id is ", projectId);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/projects/1")
+      .get(`http://localhost:5000/projects/${projectId}`)
       .then((res) => {
         console.log(res);
         setProject(res.data.successMessage);

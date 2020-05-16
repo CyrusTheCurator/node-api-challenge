@@ -24,7 +24,10 @@ function App() {
         <header className="App-header">
           <p>{welcomeText}</p>
           <Link to="/projects">click here to visit our projects!</Link>
-          <Route exact path="/projects" component={Projects} />
+          <Route
+            path="/projects/:id"
+            render={(props) => <Projects {...props} />}
+          />
         </header>
       </div>
     </Router>
