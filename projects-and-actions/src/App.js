@@ -22,12 +22,21 @@ function App() {
     <Router>
       <div className="App">
         <header className="App-header">
-          <p>{welcomeText}</p>
-          <Link to="/projects">click here to visit our projects!</Link>
-          <Route
-            path="/projects/:id"
-            render={(props) => <Projects {...props} />}
-          />
+          <h1>{welcomeText}</h1>
+          <br />
+
+          <Switch>
+            <Route
+              path="/projects/:id"
+              render={(props) => <Projects {...props} />}
+            />
+            <Route
+              path="/"
+              render={(props) => (
+                <Link to="/projects/1">click here to visit project 1</Link>
+              )}
+            />
+          </Switch>
         </header>
       </div>
     </Router>

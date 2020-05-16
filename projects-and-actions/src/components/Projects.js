@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 import axios from "axios";
 
 function Projects(props) {
-  const [project, setProject] = useState({ project: "currently empty" });
+  const [project, setProject] = useState({ actions: [] });
   const projectId = props.match.params.id;
   console.log("project id is ", projectId);
   useEffect(() => {
@@ -19,7 +19,25 @@ function Projects(props) {
   return (
     <>
       <div>name: {project.name}</div>
+      <br />
       <div>description: {project.description}</div>
+      {project.actions.length > 0 ? (
+        project.actions.map((action) => {
+          console.log("iterating");
+          return (
+            <>
+              <br />
+
+              <div>
+                action {action.id}: {action.description}
+              </div>
+              <br />
+            </>
+          );
+        })
+      ) : (
+        <div>No actions found, pardner</div>
+      )}
     </>
   );
 }

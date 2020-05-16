@@ -13,8 +13,7 @@ router.use("/:id/actions", IdPasser, actionPasser, actionRouter);
 router.get("/", (req, res) => {
   // do your magic!
   res.status(200).json({
-    message:
-      "You're in the projects folder, try adding a number at the end of your URL to find a project",
+    message: "Welcome to my amazing sprint challenge front-end",
   });
 });
 
