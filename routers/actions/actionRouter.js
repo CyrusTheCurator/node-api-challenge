@@ -68,4 +68,41 @@ router.post("/", (req, res) => {
     });
 });
 
+router.delete("/:id", (req, res) => {
+  const { id } = req.params;
+
+  remove(id)
+    .then((removedAction) => {
+      res.status(200).json({
+        message: "action removed successfully",
+        action: removedAction,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        message: "something bad happened in the action router... sorry?",
+        err: err.message,
+      });
+    });
+});
+
+router.put("/:id", (req, res) => {
+  const { id } = req.params;
+
+  const changes = req.body;
+  update(id, changes)
+    .then((changeResponse) => {
+      res.status(200).json({
+        message: "action updated successfully",
+        action: changeResponse,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        message: "something bad happened in the action router... sorry?",
+        err: err.message,
+      });
+    });
+});
+
 module.exports = router;
