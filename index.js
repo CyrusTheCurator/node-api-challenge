@@ -9,10 +9,12 @@ Go code!
 */
 
 const express = require("express");
+const cors = require("cors");
 const server = require("./server.js");
 const projectRouter = require("./routers/projects/projectRouter");
 
 server.use(express.json());
+server.use(cors());
 
 server.use("/projects", projectRouter);
 
